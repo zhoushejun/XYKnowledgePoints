@@ -33,12 +33,34 @@ XYKnowledgePoints
 7. 修复失败的构建是优先级最高的事情。
 
 ### 二分查找
-```ruby
-int binarySearch(int array[],int length,int target)//array 为一个排好序的数组  
+优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。
+
+```
+// array 为一个排好序的数组
+int binarySearch(int array[], int length, int target)  
 {  
-    if(length/2==0 && array[length/2] != target )return -1;  
-    if(array[length/2]==target)return length/2;  
-    if(array[length/2]>target])return binarySearch(array[],length/2,target);  
-    if(array[length/2]<target])return binarySearch(array[],length/2,length-length/2);  
+    if (length / 2 == 0 && array[length / 2] != target ) return -1;  
+    if (array[length / 2] == target) return length / 2;  
+    if (array[length / 2] > target]) return binarySearch(array[], length / 2, target);  
+    if (array[length / 2] < target]) return binarySearch(array[], length / 2, length - length / 2);  
 }
 ```
+
+### 多线程
+线程（thread）是组成进程的子单元，操作系统的调度器可以对线程进行单独的调度。
+
+* pthread
+是线程的POSIX标准
+* NSThread
+是Objective-C对pthread的一个封装.
+
+```
+@interface FindMinMaxThread : NSThread
+
+- (void)start;
+- (BOOL)isFinished
+
+```
+
+* GCD(Grand Central Dispatch)
+是一套低层API,提供了一种新的方法来进行并发程序编写.作为开发者可以将工作考虑为一个队列，而不是一堆线程.公开有 5个不同的队列: 运行在主线程中的 main queue，3个不同优先级的后台队列,以及一个优先级更低的后台队列(用于I/O).开发者还可以创建自定义队列:串行或者并行队列。
