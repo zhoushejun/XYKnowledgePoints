@@ -31,3 +31,14 @@ XYKnowledgePoints
 5. 每次构建都要100%通过。
 6. 每次构建都可以生成可发布的产品。
 7. 修复失败的构建是优先级最高的事情。
+
+### 二分查找
+```ruby
+int binarySearch(int array[],int length,int target)//array 为一个排好序的数组  
+{  
+    if(length/2==0 && array[length/2] != target )return -1;  
+    if(array[length/2]==target)return length/2;  
+    if(array[length/2]>target])return binarySearch(array[],length/2,target);  
+    if(array[length/2]<target])return binarySearch(array[],length/2,length-length/2);  
+}
+```
