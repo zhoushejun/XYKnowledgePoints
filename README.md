@@ -41,15 +41,16 @@ XYKnowledgePoints
 // array 为一个排好序的数组
 int binarySearch(int array[], int length, int target)  
 {  
-    if (length / 2 == 0 && array[length / 2] != target ) return -1;  
-    if (array[length / 2] == target) return length / 2;  
-    if (array[length / 2] > target]) return binarySearch(array[], length / 2, target);  
-    if (array[length / 2] < target]) return binarySearch(array[], length / 2, length - length / 2);  
+    if (length/2==0 && array[length/2] != target ) return -1;  
+    if (array[length/2]==target) return length/2;  
+    if (array[length/2]>target]) return binarySearch(array[],length/2,target);  
+    if (array[length/2]<target]) return binarySearch(array[],length/2,length-length/2);  
 }
 ```
 
 ---
 ### 多线程
+进程是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位. 
 线程（thread）是组成进程的子单元，操作系统的调度器可以对线程进行单独的调度。
 
 * pthread 是线程的POSIX标准
@@ -140,9 +141,35 @@ voidQuickSort(inta[],intnumsize)/*a是整形数组，numsize是元素个数*/
 * 继承
 * 多态
 
-#### 五个设计原则
-* 单一职责原则(Single-Resposibility Principle)
-* 开放封闭原则(Open-Closed principle)
-* Liskov替换原则(Liskov-Substituion Principle)
-* 依赖倒置原则(Dependecy-Inversion Principle)
-* 接口隔离原则(Interface-Segregation Principle)
+#### 六个设计原则
+1. 单一职责原则(Single-Resposibility Principle).不要存在多于一个导致类变更的原因。通俗的说，即一个类只负责一项职责。
+2. 里氏替换原则(Liskov-Substituion Principle).所有引用基类的地方必须能透明地使用其子类的对象。
+3. 依赖倒置原则(Dependecy-Inversion Principle).高层模块不应该依赖低层模块，二者都应该依赖其抽象；抽象不应该依赖细节；细节应该依赖抽象。
+4. 接口隔离原则(Interface-Segregation Principle).客户端不应该依赖它不需要的接口；一个类对另一个类的依赖应该建立在最小的接口上。
+5. 迪米特法则(Law of Demeter).一个对象应该对其他对象保持最少的了解。
+6. 开放封闭原则(Open-Closed principle).一个软件实体如类、模块和函数应该对扩展开放，对修改关闭。
+
+#### 23个设计模式
+1. 单例模式　
+2. 工厂方法模式　
+3. 抽象工厂模式　
+4. 模版方法模式
+5. 建造者模式
+6. 代理模式
+7. 原型模式
+8. 中介者模式
+9. 命令模式
+10. 责任链模式
+11. 装饰模式
+12. 策略模式
+13. 适配器模式
+14. 迭代器模式
+15. 组合模式
+16. 观察者模式
+17. 门面模式
+18. 备忘录模式
+19. 访问者模式
+20. 状态模式
+21. 解释器模式
+22. 享元模式
+23. 桥梁模式
