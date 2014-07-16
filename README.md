@@ -65,4 +65,32 @@ int binarySearch(int array[], int length, int target)
 
 * GCD(Grand Central Dispatch) 是一套低层API,提供了一种新的方法来进行并发程序编写.作为开发者可以将工作考虑为一个队列，而不是一堆线程.公开有 5个不同的队列: 运行在主线程中的 main queue，3个不同优先级的后台队列,以及一个优先级更低的后台队列(用于I/O).开发者还可以创建自定义队列:串行或者并行队列。
 * NSOperationQueue 操作队列.有两种不同类型的队列:主队列和自定义队列.主队列运行在主线程之上,而自定义队列在后台执行.在两种类型中,这些队列所处理的任务都使用 NSOperation 的子类来表述.
-* Run Loops 一个run loop就是一个事件处理的循环,用来不停的调度工作以及处理输入事件.将直接配合任务的执行,它提供了一种异步执行代码的机制.
+
+
+---
+### Run Loops
+Run Loops 不是多线程,一个run loop就是一个事件处理的循环,用来不停的调度工作以及处理输入事件.将直接配合任务的执行,它提供了一种异步执行代码的机制.
+
+1. 使用port或是自定义的input source来和其他线程进行通信
+2. 在线程（非主线程）中使用timer
+3. 使用 performSelector...系列（如performSelectorOnThread, ...）
+4. 使用线程执行周期性工作
+
+
+```
+// 让一个一个线程进入"等待"状态,直到shouldKeepRunning == NO;
+BOOL shouldKeepRunning = YES;	// global
+while (shouldKeepRunning){
+        [NSThread sleepForTimeInterval:0.5];
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+}
+```
+
+---
+### Runtime
+#### 概念
+Objective-C runtime是一个实现Objective-C语言的C库.对象可以用C语言中的结构体表示,而方法(methods)可以用C函数实现.另外再加上了一些额外的特性.这些结构体和函数被runtime函数封装后，Objective-C程序员可以在程序运行时创建,检查,修改类,对象和它们的方法.
+
+1. 动态创建类
+2. 创建对象
+3. 消息派发
