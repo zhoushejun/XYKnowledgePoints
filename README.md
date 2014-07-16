@@ -94,3 +94,55 @@ Objective-C runtime是一个实现Objective-C语言的C库.对象可以用C语�
 1. 动态创建类
 2. 创建对象
 3. 消息派发
+
+---
+### 排序
+##### 快速排序(Quick sort)
+是对冒泡排序的一种改进.由C. A. R. Hoare在1962年提出.它的基本思想是:通过一趟排序将要排序的数据分割成独立的两部分,其中一部分的所有数据都比另外一部分的所有数据都要小,然后再按此方法对这两部分数据分别进行快速排序,整个排序过程可以递归进行,以此达到整个数据变成有序序列.
+
+```
+voidQuickSort(inta[],intnumsize)/*a是整形数组，numsize是元素个数*/
+{
+    inti=0,j=numsize-1;
+    intval=a[0];/*指定参考值val大小*/
+    if(numsize>1)/*确保数组长度至少为2，否则无需排序*/
+    {
+        while(i<j)/*循环结束条件*/
+        {
+            /*从后向前搜索比val小的元素，找到后填到a[i]中并跳出循环*/
+            for(;j>i;j--)
+                if(a[j]<val)
+                {
+                    a[i]=a[j];
+                    break;
+                }
+            /*从前往后搜索比val大的元素，找到后填到a[j]中并跳出循环*/
+            for(;i<j;i++)
+                if(a[i]>val)
+                {
+                    a[j]=a[i];
+                    break;
+                }
+        }
+        a[i]=val;/*将保存在val中的数放到a[i]中*/
+        QuickSort(a,i);/*递归，对前i个数排序*/
+        QuickSort(a+i+1,numsize-1-i);/*对i+1到numsize-1这numsize-1-i个数排序*/
+    }
+}
+```
+#### 冒泡排序(Bubble Sort)
+重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。
+
+---
+### 面向对象
+#### 三个基本特征
+* 封装
+* 继承
+* 多态
+
+#### 五个设计原则
+* 单一职责原则(Single-Resposibility Principle)
+* 开放封闭原则(Open-Closed principle)
+* Liskov替换原则(Liskov-Substituion Principle)
+* 依赖倒置原则(Dependecy-Inversion Principle)
+* 接口隔离原则(Interface-Segregation Principle)
