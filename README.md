@@ -204,3 +204,11 @@ int (*f) (int x);
 * 给对象发送retain消息后，你拥有了这个对象
 * 当你不需要使用该对象时，发送release或者autorelease消息放弃这个对象
 * 不要对你不拥有的对象发送“release”的消息
+
+### 网络
+#### upd
+基于udp的可靠传输协议 
+
+* RUD
+* PRTP
+* UDT
